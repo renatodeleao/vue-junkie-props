@@ -1,16 +1,30 @@
 {
   "name": "vue-junkie-props",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "demo": "vue-cli-service demo",
+    "docs": "npm run docs:serve",
+    "docs:build": "vue-cli-service docs --mode build",
+    "docs:serve": "vue-cli-service docs --mode serve",
+    "prepublish": "vue-cli-service lint && vue-cli-service docs --mode build && vue-cli-service build",
+    "start": "vue-cli-service serve"
   },
+  "main": "dist/vue-junkie-props.common.js",
+  "module": "dist/vue-junkie-props.esm.js",
+  "unpkg": "dist/vue-junkie-props.umd.min.js",
+  "files": [
+    "dist/vue-junkie-props.common.js",
+    "dist/vue-junkie-props.umd.min.js",
+    "dist/vue-junkie-props.umd.js",
+    "dist/vue-junkie-props.esm.js",
+    "src"
+  ],
   "dependencies": {
-    "core-js": "^3.6.4",
-    "vue": "^2.6.11"
+    "core-js": "^3.6.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.3.0",
@@ -25,15 +39,19 @@
     "eslint-plugin-vue": "^6.2.2",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
-    "vue-template-compiler": "^2.6.11"
+    "vue-cli-plugin-p11n": "~0.4.0",
+    "vue-template-compiler": "^2.6.11",
+    "vue": "^2.6.11"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
+  "jsdelivr": "dist/vue-junkie-props.umd.min.js",
   "lint-staged": {
     "*.{js,jsx,vue}": [
       "vue-cli-service lint",
       "git add"
     ]
-  }
+  },
+  "sideeffects": false
 }
